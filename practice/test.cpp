@@ -4,7 +4,7 @@ using namespace std;
 int main()
 {
 
-    int i, position = -1, value, size;
+    int i, position = -1, value, size, start, end, mid;
 
     cout << "Enter the size of the array : \t";
 
@@ -28,22 +28,35 @@ int main()
     cout << "\nEnter the value you want to search: ";
     cin >> value;
 
-    for (i = 1; i <= size; i++)
+    start = 1;
+    end = size;
+    mid = (start + end) / 2;
+
+    while (start <= end)
     {
-        if (array[i] == value)
+        if (array[mid] == value)
         {
-            position = i;
+            position = mid;
             break;
         }
+        else if (array[mid] < value)
+        {
+            start = mid + 1;
+        }
+        else
+        {
+            end = mid - 1;
+        }
+        mid = (start + end) / 2;
     }
 
     if (position == -1)
     {
-        cout << "Data not found";
+        cout << "Value not found";
     }
     else
     {
-        cout << position << " is the location of search item " << value;
+        cout << "Value found at position " << position;
     }
 
     cout << endl;
