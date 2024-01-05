@@ -1,1 +1,1 @@
-getline
+smallest = j;
